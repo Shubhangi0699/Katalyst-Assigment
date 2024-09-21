@@ -1,0 +1,50 @@
+<app-header (cartToggle)="toggleCart()"></app-header>
+<app-cart-sidebar [isOpen]="isCartOpen"></app-cart-sidebar>
+<div>
+    <div>
+        <img src="../../../assets/Images/ShopPage.jpg" style="width: 100%;">
+    </div>
+    <div style="height: 70px; width: 100%; background-color:#F9F1E7; padding-left: 100px;padding-right: 100px; justify-content: space-around;" class="py-4 d-flex">
+        <div>
+            <label for="productType">Filter by Type:</label>
+            <select id="productType" (change)="onFilterChange($event)">
+                <option value="all">All</option>
+                <option value="Living">Living</option>
+                <option value="Kitichen">Kitchen</option>
+                <option value="Bed">Bed</option>
+                <option value="Dining">Dining</option>
+            </select>
+            <select *ngIf="dropdownVisible" id="productType" (change)="onFilterChange($event)" style="margin-left: 10px;">
+                <option value="all">All</option>
+                <option value="Living">Living</option>
+                <option value="Kitichen">Kitchen</option>
+                <option value="Bed">Bed</option>
+                <option value="Dining">Dining</option>
+            </select>
+            <img src="../../../assets/Images/VectorIcon.png" class="ml-4">
+            <img src="../../../assets/Images/VectorIcons.png" class="ml-4">
+            <span class="ml-4">Showing {{ filteredProducts.length }} of {{ products.length }} result(s)</span>
+        </div>
+        <div class="d-flex">
+            <span>Show</span><div class="px-3 bg-white ml-2">{{filteredProducts.length}}</div>
+             <span  class="ml-4">Sort By</span>  <select class="px-3 bg-white ml-2" (change)="onSortChange($event)">
+                <option value="default">Default</option>
+                <option value="lowToHigh">Price: Low to High</option>
+                <option value="highToLow">Price: High to Low</option>
+            </select>
+        </div>
+    </div>
+    <div class="row p-3" >
+        <div class="col-md-3" *ngFor="let product of filteredProducts">
+            <div class="card">
+                <img [src]="product.image" class="card-img-top" [alt]="product.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.price | currency:'USD' }}</p>
+                    <a class="btn btn-primary"  (click)="addToCart(product)">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

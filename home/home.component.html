@@ -1,0 +1,17 @@
+
+<app-header (cartToggle)="toggleCart()"></app-header>
+<app-cart-sidebar [isOpen]="isCartOpen"></app-cart-sidebar>
+<div class="image-container">
+    <img style="width: 100%;" src="../../../assets/Images/home_bgImage.png">
+  <div class="overlay-content">
+<div class="div-data">
+    <p class="text">New Arrival</p>
+    <h1 class="collection">Discover Our New Collection</h1>
+</div>
+<div class="btn-data"><button class="btn-buy" (click)="navigateToShop()">BUY NOW</button></div>
+  </div>
+</div>
+<div *ngIf="showCarousel">
+   <app-product-category-carousel></app-product-category-carousel>
+  </div>
+<app-footer></app-footer>

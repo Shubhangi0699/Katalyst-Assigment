@@ -10,7 +10,7 @@
     z-index: 1000;
     transition: transform 0.3s ease-in-out;
     transform: translateX(100%);
-    pointer-events: auto; /* Ensure the sidebar is clickable */
+    pointer-events: auto; 
   }
   
   .cart-sidebar.open {
